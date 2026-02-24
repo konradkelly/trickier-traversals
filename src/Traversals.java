@@ -18,6 +18,7 @@ public class Traversals {
     return sumLeafNodes(node.left) + sumLeafNodes(node.right);
   }
 
+
   /**
    * Counts the number of internal nodes (non-leaf nodes) in the given tree of integers.
    * An internal node has at least one child.
@@ -27,8 +28,10 @@ public class Traversals {
    * @return the count of internal nodes, or 0 if the tree is null
    */
   public static int countInternalNodes(TreeNode<Integer> node) {
-    return 0;
-  }
+    if (node == null) return 0;
+    return ((node.left != null || node.right != null) ? 1 : 0) + countInternalNodes(node.left) + countInternalNodes(node.right);
+}
+
 
   /**
    * Creates a string by concatenating the string representation of each node's value
