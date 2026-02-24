@@ -81,8 +81,19 @@ public class Traversals {
    * @return the number of unique values in the tree, or 0 if the tree is null
    */
   public static int countDistinctValues(TreeNode<Integer> node) {
-    return 0;
+    Set<Integer> visited = new HashSet<>();
+    countDistinctValuesHelper(node, visited);
+    return visited.size();
   }
+
+
+  public static void countDistinctValuesHelper(TreeNode<Integer> node, Set<Integer> visited) {
+    if (node == null) return;
+    visited.add(node.value);
+    countDistinctValuesHelper(node.left, visited);
+    countDistinctValuesHelper(node.right, visited);
+  }
+
 
   /**
    * Determines whether there is at least one root-to-leaf path in the tree
